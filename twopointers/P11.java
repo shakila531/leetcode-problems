@@ -1,0 +1,35 @@
+public class P11 {
+    public int maxArea(int[] height) {
+
+        int left = 0;
+        int right = height.length - 1;
+
+        int maxArea = 0;
+
+        while (left < right) {
+
+            int width = right - left;
+
+            int currentArea = Math.min(height[left], height[right]) * width;
+
+            maxArea = Math.max(maxArea, currentArea);
+
+            if (height[left] < height[right]) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+
+        return maxArea;
+    
+        
+    }
+    public static void main(String[] args) {
+        P11 solution = new P11();
+        int[] height = {1,8,6,2,5,4,8,3,7};
+        int result = solution.maxArea(height);
+        System.out.println("Max area: " + result); // Output: 49
+    }
+    
+}
